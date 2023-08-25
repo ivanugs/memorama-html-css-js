@@ -4,4 +4,20 @@ body {
 
 p {
     color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+h1 {
+    color: orange;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+#container {
+    width: fit-content;
+    border: 1px solid orange;
+    padding: 1mm;
+    margin: 0 auto;
+    text-align: center;
 }
