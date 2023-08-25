@@ -2,26 +2,27 @@ body {
     background-color: blueviolet;
 }
 
-p {
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: large;
-}
-
-h1 {
-    color: orange;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: large;
-}
-
 #container {
     width: fit-content;
-    border: 1px solid orange;
-    padding: 1mm;
+    border: 1px solid black;
+    padding: 0;
     margin: 0 auto;
     text-align: center;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
 }
 
 #cabecera {
-    text-align: center;
+    background: yellow;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.5em;
+}
+
+#post{
+    background: orange;
+    padding: 1em;
 }
