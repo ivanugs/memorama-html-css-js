@@ -1,11 +1,12 @@
 body {
-    background-color: blueviolet;
+    margin: 0;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 }
 
 #container {
     width: fit-content;
-    border: 1px solid black;
-    padding: 0;
+    padding: 1.5em;
     margin: 0 auto;
     text-align: center;
     color: white;
@@ -14,15 +15,43 @@ body {
 }
 
 #cabecera {
-    background: greenyellow;
+    background: #ff66ff;
     color: black;
     text-align: left;
     font-weight: bold;
     margin: 0;
     padding: 0.5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    color: white;
 }
 
 #post{
     background: orange;
     padding: 1em;
+}
+
+footer {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+footer a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+footer a:link { 
+    color:white;
+}
+
+footer a:hover { 
+    color: #ff66ff;
+}
+
+footer a:active { 
+    color: red;
 }
