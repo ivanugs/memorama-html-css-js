@@ -69,14 +69,26 @@ footer a:active {
     color: red;
 }
 
+#game-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .card {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #000;
-    margin: 5px;
-    text-align: center;
-    line-height: 50px;
-    font-size: 24px;
+    width: 100px;
+    height: 120px;
+    margin: 10px;
+    border: 1px solid #ccc;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Agregar una transición suave cuando se voltea */
+}
+
+.card col3 img {
+    width: 100%;
+    height: 100%;
+}
+
+.card.flipped {
+    transform: rotateY(180deg); /* Rotar la carta 180 grados al voltearla */
 }
