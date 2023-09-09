@@ -1,6 +1,6 @@
 create database yayacmetics;
 
-use yayacmetics
+use yayacmetics;
 
 create table cliente (
 	clienteID int primary key,
@@ -28,6 +28,7 @@ create table venta(
 create table ventaxproducto(
 	productoID varchar(15) not null,
     folio int not null,
+    cantidad tinyint not null,
     precio_unitario decimal(7,2) not null,
     precio_venta decimal(7,2) not null,
     foreign key (productoID) references producto(productoID),
