@@ -8,10 +8,11 @@ function generarTarjetas() {
             tarjetas.push(valores[j]);
         }
     }
+    console.log(tarjetas);
     return tarjetas;
 }
 
-//funcion para mezclar el array de cartas
+//funcion para mezclar el array de cartas usando el algoritmo fishe-yates
 function mezclarTarjetas(tarjetas) {
     for (let i = tarjetas.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -28,11 +29,11 @@ function crearTablero(tarjetas) {
     mezclarTarjetas(tarjetas);
 
     // Crear los divs para mostrar las cartas
-    tarjetas.forEach(function(card, index) {
+    tarjetas.forEach(function(tarjeta, index) {
         const tarjetaDiv = document.createElement('div');
         tarjetaDiv.className = 'tarjeta';
         tarjetaDiv.classList.add('col-3')
-        tarjetaDiv.dataset.value = card; // Almacenar el valor de la carta
+        tarjetaDiv.dataset.value = tarjeta; // Almacenar el valor de la carta
         tarjetaDiv.dataset.index = index; // Almacenar el índice de la carta
 
         // Crear la imagen de la carta
@@ -40,20 +41,9 @@ function crearTablero(tarjetas) {
         img.classList.add("cover");;
         img.src = 'img/question.jpg';
 
-        tarjetaDiv.addEventListener('click', voltearTarjeta);
         tarjetaDiv.appendChild(img);
         tablero.appendChild(tarjetaDiv);
     });
-}
-
-
-//funcion para voltear una carta
-function voltearTarjeta(event) {
-    const tarjetaDiv = event.target;
-    const tarjetaValor = tarjetaDiv.dataset.value;
-    const tarjetaIndex = tarjetaDiv.dataset.index;
-    
-    tarjetaDiv.textContent = tarjetaValor; //mostrar el valor de la carta
 }
 
 const tarjetas = generarTarjetas();
