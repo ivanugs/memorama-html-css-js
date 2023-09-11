@@ -1,72 +1,59 @@
 body {
-    margin: 0;
-    background: rgb(63,94,251);
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-#container {
-    width: fit-content;
-    padding: 1.5em;
-    margin: 0 auto;
-    text-align: center;
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
+    background: rgb(119,111,255);
+    background: -moz-radial-gradient(circle, rgba(119,111,255,1) 0%, rgba(9,9,121,1) 43%, rgba(0,212,255,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(119,111,255,1) 0%, rgba(9,9,121,1) 43%, rgba(0,212,255,1) 100%);
+    background: radial-gradient(circle, rgba(119,111,255,1) 0%, rgba(9,9,121,1) 43%, rgba(0,212,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#776fff",endColorstr="#00d4ff",GradientType=1);
 }
 
 #cabecera {
-    background: #ff66ff;
+    background: #68196c;
     color: black;
     text-align: left;
     font-weight: bold;
     margin: 0;
-    padding: 0.5em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
     color: white;
-}
-
-main {
-    flex-grow: 1;
-}
-
-#title-cabecera {
     display: flex;
-    align-items: center;
+    max-height: 100px;
+    width: 100%;
+}
+
+.title-cabecera {
+    display: flex;
+    max-width: 15rem;
+    height: auto;
+}
+
+.logo {
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.titulo {
+    height: 100%;
+    padding-top: .5em;
+}
+
+.panel{
+    max-width: 5rem;
+}
+
+.container{
+    display: grid;
     justify-content: center;
+    align-items: center;
 }
 
-#post{
-    background: orange;
-    padding: 1em;
-}
-
-footer {
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
-    color: white;
-}
-
-footer a {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
-    color: white;
-}
-
-footer a:link { 
-    color:white;
-}
-
-footer a:hover { 
-    color: #ff66ff;
-}
-
-footer a:active { 
-    color: red;
+#tablero-juego {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 5px solid #ffffff;
+    width: 50em;
+    height: auto;
+    flex-grow: 1;
 }
 
 .row {
@@ -76,10 +63,22 @@ footer a:active {
     padding: auto;
 }
 
+.tarjeta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .cover{
+    border-radius: 1.5rem;
+    border: 3px solid #ffffff;
     position: relative;
     width: 200px;
-    height: 250px;
-    padding: 10px;
+    height: 230px;
+    margin: 10px;
+}
+
+.cover:hover{
+    width: 205px;
+    height: 235px;
 }

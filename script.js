@@ -12,7 +12,7 @@ function generarTarjetas() {
     return tarjetas;
 }
 
-//funcion para mezclar el array de cartas usando el algoritmo fishe-yates
+//funcion para mezclar el array de cartas usando el algoritmo fisher-yates
 function mezclarTarjetas(tarjetas) {
     for (let i = tarjetas.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -39,7 +39,7 @@ function crearTablero(tarjetas) {
         // Crear la imagen de la carta
         const img = document.createElement("img")
         img.classList.add("cover");;
-        img.src = 'img/question.jpg';
+        img.src = 'img/question.png';
 
         tarjetaDiv.appendChild(img);
         tablero.appendChild(tarjetaDiv);
