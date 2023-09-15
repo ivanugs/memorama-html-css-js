@@ -1,6 +1,6 @@
 //funcion para generar el array de cartas
 function generarTarjetas() {
-    const valores = ['A', 'B', 'C', 'D', 'E', 'F'];
+    const valores = ['/img/css.png', '/img/dj.png', '/img/html.png', '/img/js.png', '/img/py.png', '/img/react.png'];
     const tarjetas = [];
     //duplicar cada valor para que haya pares
     for (let i = 0; i < 2; i++) {
@@ -46,5 +46,18 @@ function crearTablero(tarjetas) {
     });
 }
 
+function cambiarImagen(element) {
+    const newValue = element.getAttribute("data-value");
+    const img = element.querySelector("img");
+    img.src = newValue;
+}
+
 const tarjetas = generarTarjetas();
 crearTablero(tarjetas);
+const card = document.querySelectorAll(".tarjeta");
+card.forEach(tarjeta => {
+    tarjeta.addEventListener("click", function () {
+        cambiarImagen(this);
+    });
+});
+

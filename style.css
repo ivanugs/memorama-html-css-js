@@ -18,6 +18,9 @@ body {
     display: flex;
     max-height: 100px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .title-cabecera {
@@ -38,7 +41,15 @@ body {
 }
 
 .panel{
-    max-width: 5rem;
+    margin-right: 1rem;
+}
+
+.panel i{
+    margin: 5px;
+}
+
+.panel label{
+    margin: 1rem;
 }
 
 .container{
@@ -54,6 +65,7 @@ body {
     width: 50em;
     height: auto;
     flex-grow: 1;
+    border-radius: 2rem;
 }
 
 .row {
@@ -76,9 +88,9 @@ body {
     width: 200px;
     height: 230px;
     margin: 10px;
+    box-shadow: 0px -1px 14px 0px rgb(255, 255, 255);
 }
 
 .cover:hover{
-    width: 205px;
-    height: 235px;
+    box-shadow: none;
 }
