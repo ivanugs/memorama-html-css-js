@@ -38,7 +38,7 @@ function crearTablero(tarjetas) {
 
         // Crear la imagen de la carta
         const img = document.createElement("img")
-        img.classList.add("cover");;
+        img.classList.add("cover");
         img.src = 'img/question.png';
 
         tarjetaDiv.appendChild(img);
@@ -50,14 +50,57 @@ function cambiarImagen(element) {
     const newValue = element.getAttribute("data-value");
     const img = element.querySelector("img");
     img.src = newValue;
+    return newValue;
+}
+
+function cambiarImagenWrong() {
+    const img = document.getElementById("point");
+    img.src = 'img/question.png';
+}
+
+function addAtributoSelector(element){
+    const img = element.querySelector("img");
+    img.setAttribute("id","point");
+}
+
+function removeAtributoSelector(){
+    const element = document.getElementById("point");
+    element.removeAttribute("id");
 }
 
 const tarjetas = generarTarjetas();
 crearTablero(tarjetas);
 const card = document.querySelectorAll(".tarjeta");
-card.forEach(tarjeta => {
-    tarjeta.addEventListener("click", function () {
-        cambiarImagen(this);
+let clicks = 0;
+let contenedor;
+
+card.forEach(function(tarjeta) {
+    tarjeta.addEventListener("click", function() {
+        const apuntador = cambiarImagen(this);
+        clicks = clicks + 1;
+        switch(clicks){
+            case 1:
+                contenedor = apuntador;
+                addAtributoSelector(this);
+                break;
+            case 2:
+                addAtributoSelector(this);
+                clicks = 0;
+                if (contenedor == apuntador){
+                    console.log("Bien hecho apa");
+                    for(i=2; i>0; i--){
+                        removeAtributoSelector();
+                    }
+                    //punto mas en label de html para que muestre los pares que lleva
+                }else{
+                    setTimeout(() => {
+                        for(i=2; i>0; i--){
+                            cambiarImagenWrong();
+                            removeAtributoSelector();
+                        }  
+                    }, 1500);
+                }
+        }
     });
 });
 
