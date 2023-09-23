@@ -98,7 +98,7 @@ card.forEach(function(tarjeta) {
                             cambiarImagenWrong();
                             removeAtributoSelector();
                         }  
-                    }, 1500);
+                    }, 900);
                 }
         }
     });
