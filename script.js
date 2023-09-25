@@ -23,21 +23,18 @@ function mezclarTarjetas(tarjetas) {
 //crear el div de tablero de juego
 function crearTablero(tarjetas) {
     const tablero = document.getElementById('tablero-juego');
-    tablero.classList.add('row')
-
-    // Revolver las cartas
+    tablero.classList.add('row');
     mezclarTarjetas(tarjetas);
-
     // Crear los divs para mostrar las cartas
     tarjetas.forEach(function(tarjeta, index) {
         const tarjetaDiv = document.createElement('div');
         tarjetaDiv.className = 'tarjeta';
-        tarjetaDiv.classList.add('col-3')
+        tarjetaDiv.classList.add('col-3');
         tarjetaDiv.dataset.value = tarjeta; // Almacenar el valor de la carta
-        tarjetaDiv.dataset.index = index; // Almacenar el índice de la carta
+        //tarjetaDiv.dataset.index = index; // Almacenar el índice de la carta
 
         // Crear la imagen de la carta
-        const img = document.createElement("img")
+        const img = document.createElement("img");
         img.classList.add("cover");
         img.src = 'img/question.png';
 
@@ -46,61 +43,77 @@ function crearTablero(tarjetas) {
     });
 }
 
+//funcion para destapar las cartas
 function cambiarImagen(element) {
-    const newValue = element.getAttribute("data-value");
-    const img = element.querySelector("img");
-    img.src = newValue;
+    const newValue = element.getAttribute("data-value"); //obtiene el data-value que es la direccion de la imagen del array que cambia al dar click
+    const img = element.querySelector("img"); //seleccionamos el elemento img
+    img.src = newValue; //le asiganmos el nuevo src a la carta para que cambie la imagen
     return newValue;
 }
 
+//funcion para tapar las cartas que no son pares
 function cambiarImagenWrong() {
-    const img = document.getElementById("point");
-    img.src = 'img/question.png';
+    tarjetasSeleccionadas.forEach(function(tarjeta) {
+        const img = tarjeta.querySelector("img");
+        img.src = 'img/question.png';
+    });
 }
 
-function addAtributoSelector(element){
-    const img = element.querySelector("img");
-    img.setAttribute("id","point");
-}
+const tarjetas = generarTarjetas(); //genera las tarjetas
+crearTablero(tarjetas); //agrega las tarjetas al tablero
 
-function removeAtributoSelector(){
-    const element = document.getElementById("point");
-    element.removeAttribute("id");
-}
-
-const tarjetas = generarTarjetas();
-crearTablero(tarjetas);
 const card = document.querySelectorAll(".tarjeta");
 let clicks = 0;
 let contenedor;
+let paresEncontrados = 0;
+let tarjetasSeleccionadas = [];
 
 card.forEach(function(tarjeta) {
     tarjeta.addEventListener("click", function() {
-        const apuntador = cambiarImagen(this);
-        clicks = clicks + 1;
-        switch(clicks){
-            case 1:
-                contenedor = apuntador;
-                addAtributoSelector(this);
-                break;
-            case 2:
-                addAtributoSelector(this);
-                clicks = 0;
-                if (contenedor == apuntador){
-                    console.log("Bien hecho apa");
-                    for(i=2; i>0; i--){
-                        removeAtributoSelector();
+        if (tarjetasSeleccionadas.length < 2) {
+            let apuntador = cambiarImagen(this);
+            clicks = clicks + 1;
+            switch(clicks){
+                case 1:
+                    tarjetasSeleccionadas.push(apuntador);
+                    tarjetasSeleccionadas.push(this);
+                    console.log("Indice 0: ",tarjetasSeleccionadas[0]);
+                    console.log("Indice 1: ",tarjetasSeleccionadas[1]);
+                    break;
+                case 2:
+                    tarjetasSeleccionadas.push(apuntador);
+                    tarjetasSeleccionadas.push(this);
+                    console.log("Indice 2: ",tarjetasSeleccionadas[2]);
+                    console.log("Indice 3: ",tarjetasSeleccionadas[3]);
+                    clicks = 0;
+                    if (tarjetasSeleccionadas[0] == tarjetasSeleccionadas[1]){
+                        paresEncontrados = paresEncontrados + 1;
+                        document.getElementById('puntos').innerHTML = paresEncontrados;
+                        // Deshabilitar tarjetas encontradas
+                        /* tarjetasSeleccionadas.forEach(function(tarjeta) {
+                            tarjeta.removeEventListener("click", null);
+                            tarjeta.classList.add("encontrada");
+                        }); */
+                        tarjetasSeleccionadas = [];
+                    } 
+                    else {
+                        setTimeout(() => {
+                            for(i=2; i>0; i--){
+                                cambiarImagenWrong();
+                            }  
+                            tarjetasSeleccionadas = [];
+                        }, 1000);
                     }
-                    //punto mas en label de html para que muestre los pares que lleva
-                }else{
-                    setTimeout(() => {
-                        for(i=2; i>0; i--){
-                            cambiarImagenWrong();
-                            removeAtributoSelector();
-                        }  
-                    }, 1000);
-                }
+            }
         }
     });
 });
 
+var reset = document.getElementById("btn-reiniciar");
+reset.addEventListener("click", function() {
+    let opcion = confirm("Estas seguro de reiniciar el juego?");
+    if (opcion == true) {
+        window.location.reload();
+	} else {
+	}
+});
