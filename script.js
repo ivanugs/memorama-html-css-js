@@ -115,5 +115,6 @@ reset.addEventListener("click", function() {
     if (opcion == true) {
         window.location.reload();
 	} else {
+        //etc etc
 	}
 });
