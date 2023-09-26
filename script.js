@@ -53,7 +53,7 @@ function cambiarImagen(element) {
 
 //funcion para tapar las cartas que no son pares
 function cambiarImagenWrong() {
-    tarjetasSeleccionadas.forEach(function(tarjeta) {
+    array.forEach(function(tarjeta) {
         const img = tarjeta.querySelector("img");
         img.src = 'img/question.png';
     });
@@ -67,6 +67,7 @@ let clicks = 0;
 let contenedor;
 let paresEncontrados = 0;
 let tarjetasSeleccionadas = [];
+let array = [];
 
 card.forEach(function(tarjeta) {
     tarjeta.addEventListener("click", function() {
@@ -76,15 +77,11 @@ card.forEach(function(tarjeta) {
             switch(clicks){
                 case 1:
                     tarjetasSeleccionadas.push(apuntador);
-                    tarjetasSeleccionadas.push(this);
-                    console.log("Indice 0: ",tarjetasSeleccionadas[0]);
-                    console.log("Indice 1: ",tarjetasSeleccionadas[1]);
+                    array.push(this);
                     break;
                 case 2:
                     tarjetasSeleccionadas.push(apuntador);
-                    tarjetasSeleccionadas.push(this);
-                    console.log("Indice 2: ",tarjetasSeleccionadas[2]);
-                    console.log("Indice 3: ",tarjetasSeleccionadas[3]);
+                    array.push(this);
                     clicks = 0;
                     if (tarjetasSeleccionadas[0] == tarjetasSeleccionadas[1]){
                         paresEncontrados = paresEncontrados + 1;
@@ -95,6 +92,7 @@ card.forEach(function(tarjeta) {
                             tarjeta.classList.add("encontrada");
                         }); */
                         tarjetasSeleccionadas = [];
+                        array = [];
                     } 
                     else {
                         setTimeout(() => {
@@ -102,6 +100,7 @@ card.forEach(function(tarjeta) {
                                 cambiarImagenWrong();
                             }  
                             tarjetasSeleccionadas = [];
+                            array = [];
                         }, 1000);
                     }
             }
