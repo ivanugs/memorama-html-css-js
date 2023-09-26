@@ -68,8 +68,8 @@ for (const temp of temps) {
     card.push(temp);
 }
 
-let clicks = 0;
-let contenedor;
+let clicks = 0; //definimos la variable click para contar los eventos click que se realizan
+let contenedor; 
 let paresEncontrados = 0;
 let tarjetasSeleccionadas = [];
 let array = [];
@@ -91,19 +91,16 @@ card.forEach(function(tarjeta) {
                     if (tarjetasSeleccionadas[0] == tarjetasSeleccionadas[1]){
                         paresEncontrados = paresEncontrados + 1;
                         document.getElementById('puntos').innerHTML = paresEncontrados;
-
-                        // Agrega la clase a las tarjetas encontradas
+                        //funcion que agrega la clase a los pares encontrados
                         array.forEach(function(tarjetaEncontrada) {
                             tarjetaEncontrada.classList.add("paresEncontrados");
                         });
-
-                        // Filtra las tarjetas encontradas del array card
+                        //funcion que filtra las tarjetas encontradas del array card
                         card = card.filter(function(tarjetaNoEncontrada) {
                             return !tarjetaNoEncontrada.classList.contains("paresEncontrados");
                         });
-
-                        tarjetasSeleccionadas = [];
-                        array = [];
+                        tarjetasSeleccionadas = []; //deja vacio el array 
+                        array = []; //deja vacio el array
                     } 
                     else {
                         setTimeout(() => {
