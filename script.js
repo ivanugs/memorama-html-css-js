@@ -62,7 +62,12 @@ function cambiarImagenWrong() {
 const tarjetas = generarTarjetas(); //genera las tarjetas
 crearTablero(tarjetas); //agrega las tarjetas al tablero
 
-const card = document.querySelectorAll(".tarjeta");
+const temps = document.querySelectorAll(".tarjeta");
+let card = [];
+for (const temp of temps) {
+    card.push(temp);
+}
+
 let clicks = 0;
 let contenedor;
 let paresEncontrados = 0;
@@ -71,7 +76,7 @@ let array = [];
 
 card.forEach(function(tarjeta) {
     tarjeta.addEventListener("click", function() {
-        if (tarjetasSeleccionadas.length < 2) {
+        if (!this.classList.contains("paresEncontrados") && tarjetasSeleccionadas.length < 2) {
             let apuntador = cambiarImagen(this);
             clicks = clicks + 1;
             switch(clicks){
@@ -86,11 +91,17 @@ card.forEach(function(tarjeta) {
                     if (tarjetasSeleccionadas[0] == tarjetasSeleccionadas[1]){
                         paresEncontrados = paresEncontrados + 1;
                         document.getElementById('puntos').innerHTML = paresEncontrados;
-                        // Deshabilitar tarjetas encontradas
-                        /* tarjetasSeleccionadas.forEach(function(tarjeta) {
-                            tarjeta.removeEventListener("click", null);
-                            tarjeta.classList.add("encontrada");
-                        }); */
+
+                        // Agrega la clase a las tarjetas encontradas
+                        array.forEach(function(tarjetaEncontrada) {
+                            tarjetaEncontrada.classList.add("paresEncontrados");
+                        });
+
+                        // Filtra las tarjetas encontradas del array card
+                        card = card.filter(function(tarjetaNoEncontrada) {
+                            return !tarjetaNoEncontrada.classList.contains("paresEncontrados");
+                        });
+
                         tarjetasSeleccionadas = [];
                         array = [];
                     } 
@@ -114,6 +125,6 @@ reset.addEventListener("click", function() {
     if (opcion == true) {
         window.location.reload();
 	} else {
-        //etc etc
+        //etc etc etc
 	}
 });
